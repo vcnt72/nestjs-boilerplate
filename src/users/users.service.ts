@@ -12,6 +12,7 @@ import { ResponseEnvelope } from 'src/utils/response/response-envelope';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
@@ -24,7 +25,8 @@ export class UsersService {
       const user = new User();
       user.email = createUserDto.email;
       user.fullname = createUserDto.fullname;
-      user.password = createUserDto.password;
+
+      user.password = await bcrypt.hash(createUserDto.password, 10);
 
       await this.userRepository.persistAndFlush(user);
       return user;
@@ -36,11 +38,6 @@ export class UsersService {
         ).withErrMsg(error.message),
       );
     }
-  }
-
-  async findAll(): Promise<User[]> {
-    const users = await this.userRepository.findAll();
-    return users;
   }
 
   async findOne(id: number): Promise<User> {
@@ -69,6 +66,10 @@ export class UsersService {
     const user = await this.findOne(id);
 
     wrap(user).assign(updateUserDto);
+
+    if (updateUserDto.password) {
+      user.password = await bcrypt.hash(user.password, 10);
+    }
 
     await this.userRepository.flush();
   }
