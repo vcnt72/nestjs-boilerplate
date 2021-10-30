@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import * as helmet from 'helmet';
+import helmet from 'helmet';
 import { CustomResponseValidationPipe } from './utils/pipe/custom-response-validation.pipe';
 
 async function bootstrap() {
@@ -9,7 +9,7 @@ async function bootstrap() {
   app.enableCors();
   app.use(helmet());
   app.useGlobalPipes(new CustomResponseValidationPipe());
-
+  app.setGlobalPrefix('api');
   await app.listen(3000);
 }
 bootstrap();

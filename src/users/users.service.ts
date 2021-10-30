@@ -1,7 +1,6 @@
 import { EntityRepository } from '@mikro-orm/knex';
 import { InjectRepository } from '@mikro-orm/nestjs';
 import {
-  BadRequestException,
   ConflictException,
   Injectable,
   InternalServerErrorException,

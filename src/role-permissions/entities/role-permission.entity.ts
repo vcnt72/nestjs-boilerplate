@@ -1,10 +1,12 @@
-import { ManyToOne, PrimaryKeyType, Property } from '@mikro-orm/core';
-import { Permission } from 'src/permissions/entities/permission.entity';
+import { Entity, ManyToOne, PrimaryKeyType, Property } from '@mikro-orm/core';
+import { Permission } from '../../permissions/entities/permission.entity';
 import { Role } from '../../roles/entities/role.entity';
 
+@Entity()
 export class RolePermission {
   @ManyToOne({
     primary: true,
+    entity: () => Role,
   })
   role: Role;
 
@@ -13,6 +15,7 @@ export class RolePermission {
 
   @ManyToOne({
     primary: true,
+    entity: () => Permission,
   })
   permission: Permission;
 

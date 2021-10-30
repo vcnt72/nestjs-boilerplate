@@ -7,13 +7,13 @@ import {
   Param,
   Delete,
   Put,
+  InternalServerErrorException,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ResponseEnvelope } from 'src/utils/response/response-envelope';
 import { ResponseCode } from 'src/utils/response/response-code';
-import { User } from './entities/user.entity';
 
 @Controller('users')
 export class UsersController {
@@ -21,21 +21,14 @@ export class UsersController {
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
-  }
-
-  @Get()
-  async findAll() {
-    let user: User[];
     try {
-      user = await this.usersService.findAll();
+      const user = this.usersService.create(createUserDto);
+      return new ResponseEnvelope(ResponseCode.SUCCESS, 'Success').withData({
+        user,
+      });
     } catch (error) {
       throw error;
     }
-
-    return new ResponseEnvelope(ResponseCode.SUCCESS, 'Success').withData({
-      user,
-    });
   }
 
   @Get(':id')

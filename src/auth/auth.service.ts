@@ -12,7 +12,7 @@ import { ResponseEnvelope } from 'src/utils/response/response-envelope';
 import { LoginDTO } from './dto/login.dto';
 import * as jwt from 'jsonwebtoken';
 import { ConfigService } from '@nestjs/config';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import { v4 } from 'uuid';
 
 @Injectable()

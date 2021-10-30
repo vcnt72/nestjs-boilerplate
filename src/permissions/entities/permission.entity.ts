@@ -5,8 +5,8 @@ import {
   OneToMany,
   Property,
 } from '@mikro-orm/core';
-import { RolePermission } from 'src/role-permissions/entities/role-permission.entity';
-import { BaseEntity } from 'src/utils/base-entity/base-entity';
+import { RolePermission } from '../../role-permissions/entities/role-permission.entity';
+import { BaseEntity } from '../../utils/base-entity/base-entity';
 
 @Entity()
 export class Permission extends BaseEntity {
