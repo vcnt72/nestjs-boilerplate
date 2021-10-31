@@ -10,6 +10,7 @@ async function bootstrap() {
   app.use(helmet());
   app.useGlobalPipes(new CustomResponseValidationPipe());
   app.setGlobalPrefix('api');
+  app.enableShutdownHooks();
   await app.listen(3000);
 }
 bootstrap();

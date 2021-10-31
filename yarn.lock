@@ -362,6 +362,13 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@golevelup/nestjs-discovery@2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@golevelup/nestjs-discovery/-/nestjs-discovery-2.3.1.tgz#7e6f798888fb4b571ba413d3fc5c2bbc996800c7"
+  integrity sha512-K3NG34hK1/UM1ardiUSS9c43AAdk6IBJHUMZbBGavqfgNo17N2wjygSDMHFd5Cf+jqTPkt+n5Vr9ua22yCLzlg==
+  dependencies:
+    lodash "^4.17.15"
+
 "@humanwhocodes/config-array@^0.6.0":
   version "0.6.0"
   resolved "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.6.0.tgz"
@@ -2130,6 +2137,11 @@ commander@4.1.1:
   resolved "https://registry.npmjs.org/commander/-/commander-4.1.1.tgz"
   integrity sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==
 
+commander@8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-8.2.0.tgz#37fe2bde301d87d47a53adeff8b5915db1381ca8"
+  integrity sha512-LLKxDvHeL91/8MIyTAD5BFMNtoIwztGPMiM/7Bl8rIPmHCZXRxmSWr91h57dpOpnQ6jIUqEWdXE/uBYMfiVZDA==
+
 commander@^2.20.0:
   version "2.20.3"
   resolved "https://registry.npmjs.org/commander/-/commander-2.20.3.tgz"
@@ -3532,6 +3544,26 @@ inquirer@8.1.2:
     strip-ansi "^6.0.0"
     through "^2.3.6"
 
+inquirer@8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-8.2.0.tgz#f44f008dd344bbfc4b30031f45d984e034a3ac3a"
+  integrity sha512-0crLweprevJ02tTuA6ThpoAERAGyVILC4sS74uib58Xf/zSr1/ZWtmm7D5CI+bSQEaA04f0K7idaHpQbSWgiVQ==
+  dependencies:
+    ansi-escapes "^4.2.1"
+    chalk "^4.1.1"
+    cli-cursor "^3.1.0"
+    cli-width "^3.0.0"
+    external-editor "^3.0.3"
+    figures "^3.0.0"
+    lodash "^4.17.21"
+    mute-stream "0.0.8"
+    ora "^5.4.1"
+    run-async "^2.4.0"
+    rxjs "^7.2.0"
+    string-width "^4.1.0"
+    strip-ansi "^6.0.0"
+    through "^2.3.6"
+
 interpret@^1.0.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/interpret/-/interpret-1.4.0.tgz"
@@ -4534,7 +4566,7 @@ lodash.set@4.3.2:
   resolved "https://registry.yarnpkg.com/lodash.set/-/lodash.set-4.3.2.tgz#d8757b1da807dde24816b0d6a84bea1a76230b23"
   integrity sha1-2HV7HagH3eJIFrDWqEvqGnYjCyM=
 
-lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.7.0:
+lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.7.0:
   version "4.17.21"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -4866,6 +4898,15 @@ neo-async@^2.6.2:
   resolved "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
+nest-commander@^2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/nest-commander/-/nest-commander-2.3.3.tgz#d422f99adfc6a0059c6f7be69ff79c5edc50dc7f"
+  integrity sha512-VzYVgJhGff+Td/FjaENwud3lhm3MHfRy8I3/OpDGmqwOfmMWHSkVd1aPVi3CqIUozGbH4KNrh9uw7TCQHld9uw==
+  dependencies:
+    "@golevelup/nestjs-discovery" "2.3.1"
+    commander "8.2.0"
+    inquirer "8.2.0"
+
 node-addon-api@^3.1.0:
   version "3.2.1"
   resolved "https://registry.npmjs.org/node-addon-api/-/node-addon-api-3.2.1.tgz"
@@ -5040,7 +5081,7 @@ optionator@^0.9.1:
     type-check "^0.4.0"
     word-wrap "^1.2.3"
 
-ora@5.4.1, ora@^5.3.0:
+ora@5.4.1, ora@^5.3.0, ora@^5.4.1:
   version "5.4.1"
   resolved "https://registry.npmjs.org/ora/-/ora-5.4.1.tgz"
   integrity sha512-5b6Y85tPxZZ7QytO+BQzysW31HJku27cRIlkbAXaNx+BdcVi+LlRFmVXzeF6a7JCwJpyw5c4b+YSVImQIrBpuQ==
