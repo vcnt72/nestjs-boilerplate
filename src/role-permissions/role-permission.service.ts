@@ -18,7 +18,7 @@ export class RolePermissionService {
   ) {}
 
   // Find all role with permissions no matter whether it's linked or not
-  async findByRoleId(roleId: number): Promise<IRoleRO> {
+  async findByRoleId(roleId: number): Promise<Role> {
     try {
       const role = await this.roleRepository.findOne(roleId, ['permissions']);
 
@@ -28,7 +28,7 @@ export class RolePermissionService {
         );
       }
 
-      return this.responseBuilder(role);
+      return role;
     } catch (error) {
       if (error instanceof ConflictException) {
         throw error;
@@ -38,29 +38,5 @@ export class RolePermissionService {
         new ResponseEnvelope(ResponseCode.UNKNOWN_ERROR, 'Unknown Error'),
       );
     }
-  }
-
-  private responseBuilder(role: Role): IRoleRO {
-    const resp: IRoleRO = {
-      id: role.id,
-      code: role.code,
-      name: role.name,
-      createdAt: role.createdAt,
-      updatedAt: role.updatedAt,
-      permissions: role.permissions.getItems().map((val) => {
-        const permissionResp: IPermissionRO = {
-          id: val.permission.id,
-          actived: val.actived,
-          hidden: val.hidden,
-          code: val.permission.code,
-          name: val.permission.name,
-          createdAt: val.permission.updatedAt,
-          updatedAt: val.permission.createdAt,
-        };
-
-        return permissionResp;
-      }),
-    };
-    return resp;
   }
 }

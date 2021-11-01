@@ -1,12 +1,6 @@
-import {
-  Cascade,
-  Collection,
-  Entity,
-  OneToMany,
-  Property,
-} from '@mikro-orm/core';
+import { Collection, Entity, ManyToMany, Property } from '@mikro-orm/core';
+import { Permission } from '../../permissions/entities/permission.entity';
 import { BaseEntity } from '../../utils/base-entity/base-entity';
-import { RolePermission } from '../../role-permissions/entities/role-permission.entity';
 
 @Entity()
 export class Role extends BaseEntity {
@@ -16,8 +10,8 @@ export class Role extends BaseEntity {
   @Property()
   code: string;
 
-  @OneToMany(() => RolePermission, (permission) => permission.role, {
-    cascade: [Cascade.REMOVE],
+  @ManyToMany(() => Permission, 'roles', {
+    owner: true,
   })
-  permissions = new Collection<RolePermission>(this);
+  permissions = new Collection<Permission>(this);
 }

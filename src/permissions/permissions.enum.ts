@@ -1,2 +1,10 @@
 // Redundancy for permission data in db
-export enum Permissions {}
+export enum Permissions {
+  CREATE_PERMISSION = 'CREATE_PERMISSION',
+  GET_PERMISSION = 'GET_PERMISSION',
+  UPDATE_PERMISSION = 'UPDATE_PERMISSION',
+  DELETE_PERMISSION = 'DELETE_PERMISSION',
+  CREATE_ROLE = 'CREATE_ROLE',
+  UPDATE_ROLE = 'UPDATE_ROLE',
+  GET_ROLE = 'GET_ROLE',
+}
