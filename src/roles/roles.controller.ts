@@ -16,7 +16,9 @@ import { ResponseCode } from 'src/utils/response/response-code';
 import { RequirePermissions } from 'src/auth/utils/decorator/require-permissions.decorator';
 import { Permissions } from 'src/permissions/permissions.enum';
 import { JwtAuthGuard } from 'src/auth/utils/guard/jwt-auth.guard';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('roles')
 @Controller('roles')
 @UseGuards(new JwtAuthGuard())
 export class RolesController {

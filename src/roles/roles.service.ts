@@ -1,4 +1,5 @@
 import { EntityRepository } from '@mikro-orm/knex';
+import { InjectRepository } from '@mikro-orm/nestjs';
 import {
   ConflictException,
   Injectable,
@@ -12,7 +13,10 @@ import { Role } from './entities/role.entity';
 
 @Injectable()
 export class RolesService {
-  constructor(private readonly roleRepository: EntityRepository<Role>) {}
+  constructor(
+    @InjectRepository(Role)
+    private readonly roleRepository: EntityRepository<Role>,
+  ) {}
 
   async create(createRoleDto: CreateRoleDto) {
     try {

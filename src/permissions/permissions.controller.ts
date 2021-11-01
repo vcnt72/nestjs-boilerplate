@@ -6,7 +6,9 @@ import { ResponseEnvelope } from 'src/utils/response/response-envelope';
 import { ResponseCode } from 'src/utils/response/response-code';
 import { RequirePermissions } from 'src/auth/utils/decorator/require-permissions.decorator';
 import { Permissions } from './permissions.enum';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('permissions')
 @Controller('permissions')
 export class PermissionsController {
   constructor(private readonly permissionsService: PermissionsService) {}

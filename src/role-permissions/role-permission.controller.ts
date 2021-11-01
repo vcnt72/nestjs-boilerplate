@@ -1,10 +1,12 @@
 import { Controller, Get, Param } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { RequirePermissions } from 'src/auth/utils/decorator/require-permissions.decorator';
 import { Permissions } from 'src/permissions/permissions.enum';
 import { ResponseCode } from 'src/utils/response/response-code';
 import { ResponseEnvelope } from 'src/utils/response/response-envelope';
 import { RolePermissionService } from './role-permission.service';
 
+@ApiTags('role-with-permissions')
 @Controller()
 export class RolePermissionController {
   constructor(private readonly rolePermissionService: RolePermissionService) {}

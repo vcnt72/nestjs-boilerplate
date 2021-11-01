@@ -59,9 +59,7 @@ export class AuthService {
 
   private generateJWTToken(jti: string, user: User): string {
     const secret = this.configService.get('JWT_SECRET');
-    const permissions = user.role.permissions
-      .getItems()
-      .map((val) => val.permission.code);
+    const permissions = user.role.permissions.getItems().map((val) => val.code);
     return jwt.sign(
       {
         user: {

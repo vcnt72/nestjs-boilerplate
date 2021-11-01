@@ -13,7 +13,9 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { ResponseEnvelope } from 'src/utils/response/response-envelope';
 import { ResponseCode } from 'src/utils/response/response-code';
 import { JwtAuthGuard } from 'src/auth/utils/guard/jwt-auth.guard';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('users')
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}

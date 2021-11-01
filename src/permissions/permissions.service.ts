@@ -1,7 +1,6 @@
 import { EntityRepository } from '@mikro-orm/knex';
 import { InjectRepository } from '@mikro-orm/nestjs';
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
-import { RolePermission } from 'src/role-permissions/entities/role-permission.entity';
 import { Role } from 'src/roles/entities/role.entity';
 import { ResponseCode } from 'src/utils/response/response-code';
 import { ResponseEnvelope } from 'src/utils/response/response-envelope';
@@ -40,14 +39,7 @@ export class PermissionsService {
     permission.name = name;
     permission.type = type;
 
-    for (const role of roles) {
-      const rolePermission = new RolePermission();
-
-      rolePermission.permission = permission;
-      rolePermission.role = role;
-      permission.roles.add(rolePermission);
-    }
-
+    permission.roles.add(...roles);
     await this.permissionRepository.persistAndFlush(permission);
     return permission;
   }
